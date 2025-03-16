@@ -35,6 +35,10 @@ b {
   font-family: "PoppinsMedium", "Rubik", sans-serif !important;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .bg-top {
   position: absolute;
   top: 0;
@@ -45,7 +49,7 @@ b {
 }
 
 .width-fix {
-  width: calc(100% - 20px);
+  width: calc(100% - 20px) !important;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -192,4 +196,89 @@ section.categoria {
   font-size: 16px !important;
   color: var(--color-primary) !important;
   margin-bottom: 0px;
+}
+
+.menu-bottom {
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  width: calc(100% - 20px);
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 50px;
+  padding: 5px;
+  font-size: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-secondary);
+  border: 1px solid #ffe28c;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-bottom-item {
+  text-decoration: none !important;
+  color: var(--color-text-out) !important;
+  font-size: 14px;
+  flex: 1;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.menu-bottom-item.active {
+  color: var(--color-black) !important;
+  font-weight: bold;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-primary) !important;
+  border-radius: 50px;
+}
+
+.badge-total-carrinho {
+  width: 21px;
+  height: 21px;
+  background-color: var(--color-primary) !important;
+  color: var(--color-black) !important;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  padding-top: 2px;
+  margin-right: 2px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bottom.disabled {
+  justify-content: center;
+  padding: 15px;
+  font-size: 18px;
+}
+
+/* Detalhes do Produto */
+.bg-top.details {
+  height: 410px;
+}
+
+.container-voltar {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+  font-size: 18px;
+  color: var(--color-black) !important;
+}
+
+.container-imagem-produto {
+  height: 240px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }

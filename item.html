@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizzaria Maluca</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/fontawesome.css" />
+    <link rel="stylesheet" href="./css/animate.css" />
+  </head>
+  <body>
+    <div class="bg-top details"></div>
+
+    <header class="width-fix mt-3">
+      <div class="card">
+        <div class="d-flex">
+          <a href="./index.html" class="container-voltar">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+
+          <div class="infos text-center">
+            <h1 class="mb-0"><b>Detalhes do produto</b></h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="imagem width-fix mt-4">
+      <div
+        class="container-imagem-produto"
+        style="
+          background-image: url('./img/calabresa.jpg');
+          background-size: cover;
+        "
+      ></div>
+
+      <div class="card mb-2">
+        <div class="d-flex">
+          <div class="infos-produto">
+            <p class="name mb-2"><b>Calabresa</b></p>
+            <p class="description mb-4">
+              Molho de tomate, mussarela, cebola, calabresa, catupiry, tomate,
+              orégano e azeitonas
+            </p>
+            <p class="price"><b>R$ 39,90</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-bottom" id="menu-bottom">
+      <a class="menu-bottom-item active" href="#">
+        <i class="fa fa-book-open"></i> &nbsp; Cardápio
+      </a>
+      <a class="menu-bottom-item" href="#">
+        <i class="fa fa-utensils"></i> &nbsp; Pedido
+      </a>
+      <a class="menu-bottom-item" href="#">
+        <span class="badge-total-carrinho">2</span>
+        <!-- <i class="fa fa-shopping-cart"></i> &nbsp; -->
+        Carrinho
+      </a>
+    </section>
+
+    <section class="menu-bottom disabled hidden" id="menu-bottom-closed">
+      <p class="mb-0"><b>Loja Fechada no momento</b></p>
+    </section>
+
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/cardapio.js"></script>
+  </body>
+</html>
