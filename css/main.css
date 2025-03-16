@@ -142,6 +142,16 @@ section.categoria {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
 }
 
+.btn-yellow {
+  border: none !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-black) !important;
+  border-radius: 20px !important;
+  padding: 15px 25px !important;
+  font-size: 20px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
 .btn-sm {
   padding: 8px 13px !important;
   border-radius: 15px !important;
@@ -393,4 +403,33 @@ section.categoria {
 
 textarea {
   height: 150px !important;
+}
+
+.menu-bottom.details {
+  justify-content: space-between;
+  padding: 8px 15px;
+}
+
+.add-carrinho {
+  display: flex;
+  text-align: center;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-menos,
+.btn-mais {
+  color: var(--color-black);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: var(--color-primary-out);
+}
+
+.add-numero-itens {
+  color: var(--color-black);
+  padding: 2px 15px;
+  font-size: 18px;
 }
