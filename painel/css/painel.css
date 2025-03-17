@@ -1,0 +1,43 @@
+/* Login */
+
+.login {
+  width: calc(100% -20px);
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .form-group {
+  display: flex;
+  align-items: center;
+}
+
+.card-login {
+  flex: 1;
+  padding: 45px !important;
+  background-color: var(--color-secondary);
+}
+
+.icon-form {
+  position: absolute;
+  margin-left: 15px;
+  color: var(--color-primary);
+  font-size: 18px;
+}
+
+img {
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.card-login input {
+  padding-left: 45px !important;
+}
+
+.btn-login {
+  padding: 11px !important;
+  font-size: 18px !important;
+}
