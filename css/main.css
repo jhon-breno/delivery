@@ -14,7 +14,7 @@
   --color-text: #4f4f4f;
   --color-text-out: #90908e;
   --color-primary: #ffbf00;
-  --color-primary-out: #ffba6f;
+  --color-primary-out: rgba(229, 255, 111, 0.852);
   --color-secondary: #fff2cc;
   --color-white: #ffffff;
   --color-red: #e74c3c;
@@ -141,7 +141,7 @@ section.categoria {
   background-color: var(--color-white);
   color: var(--color-black);
   border-radius: 20px !important;
-  padding: 15px 25px !important;
+  padding: 8px 25px !important;
   font-size: 20px !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
 }
