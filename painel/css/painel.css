@@ -179,3 +179,108 @@ h1.title-page {
   color: var(--color-black) !important;
   font-weight: bold;
 }
+
+.numero-pedido {
+  font-size: 16px !important;
+}
+
+.card-pedido .dropdown {
+  float: right !important;
+}
+
+.info-pedido {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--color-black);
+}
+
+.info-pedido i {
+  width: 25px;
+  text-align: center;
+}
+
+.info-pedido span {
+  display: block;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.separate {
+  height: 1px;
+  background-color: var(--color-text-out);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.hora-pedido {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.total-pedido {
+  text-align: right;
+  margin-bottom: 0;
+  margin-top: 15px;
+  color: var(--color-primary);
+}
+
+.card-pedido {
+  box-shadow: 1px 0 15px 3px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 0 !important;
+  margin-bottom: 40px;
+}
+
+.card-pedido::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  top: -7px;
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    ) -7px -8px / 16px 16px repeat-x;
+}
+
+.card-pedido::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  bottom: -7px;
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      #ffffff 50%,
+      #ffffff 100%
+    ) -15px 2px / 16px 16px repeat-x;
+}
+
+.card-pedido:hover {
+  background-color: var(--color-secondary);
+}
+
+.card-pedido:hover::before,
+.card-pedido:hover::after {
+  background-image: radial-gradient(
+    circle,
+    transparent,
+    transparent 50%,
+    var(--color-secondary) 50%,
+    var(--color-secondary) 100%
+  );
+}
+
+.card-content {
+  cursor: pointer;
+}
+
+.card-pedido-body {
+  height: 140px;
+}
