@@ -284,3 +284,106 @@ h1.title-page {
 .card-pedido-body {
   height: 140px;
 }
+
+/* Modal Detalhes */
+
+.modal-content {
+  background: transparent;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
+  background-color: var(--color-background);
+  border-radius: 0 !important;
+}
+
+.modal-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  top: -8px;
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      var(--color-background) 50%,
+      var(--color-background) 100%
+    ) -7px -8px / 16px 16px repeat-x;
+}
+
+.modal-title {
+  font-size: 18px;
+  color: var(--color-black);
+  font-weight: bold;
+}
+
+.modal-title .horario-pedido {
+  font-size: 14px;
+  color: var(--color-text) !important;
+  padding-left: 15px;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.container-dados-pedido {
+  padding: 20px;
+  padding-bottom: 25px;
+  background-color: var(--color-background);
+}
+
+.container-dados-pedido .d-flex {
+  justify-content: space-between;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.modal-dialog {
+  max-width: 550px;
+}
+
+.container-dados-pedido .info-pedido {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.container-itens-pedido {
+  padding: 20px;
+  background-color: var(--color-white);
+}
+
+.container-itens-pedido .card-item {
+  padding: 5px 0 10px 0;
+  border-bottom: 1px dashed #cdcdcd;
+}
+
+.container-itens-pedido .card-item:last-child {
+  border-bottom: none;
+}
+
+.container-itens-pedido::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  margin-top: 17px;
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      var(--color-white) 50%,
+      var(--color-white) 100%
+    ) -15px 2px / 16px 16px repeat-x;
+}
+
+.footer-btn {
+  display: flex;
+  justify-content: end;
+}

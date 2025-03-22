@@ -147,7 +147,11 @@
                         <p class="numero-pedido mt-2">#1</p>
                       </div>
 
-                      <div class="card-content">
+                      <div
+                        class="card-content"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalDetalhes"
+                      >
                         <div class="card-pedido-body mt-3">
                           <p class="info-pedido">
                             <i class="fas fa-user"></i> Jhon Breno
@@ -219,7 +223,11 @@
                         <p class="numero-pedido mt-2">#1</p>
                       </div>
 
-                      <div class="card-content">
+                      <div
+                        class="card-content"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalDetalhes"
+                      >
                         <div class="card-pedido-body mt-3">
                           <p class="info-pedido">
                             <i class="fas fa-user"></i> Natyelle Neves Barbosa
@@ -252,6 +260,163 @@
         </div>
       </div>
     </section>
+
+    <div id="modalDetalhes" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              #1 <span class="horario-pedido">Recebido há 33 minutos</span>
+            </h5>
+            <button
+              class="btn btn-white bt-sm"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <i class="fas fa-times"></i>&nbsp; Fechar
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-dados-pedido" pt-1>
+              <div class="row">
+                <!-- Card dados do cliente, horario do pedido e forma de entrega -->
+                <div class="col-12">
+                  <div class="card card-address cursor-default">
+                    <div class="img-icon-details">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <div class="infos pr-0">
+                      <div class="d-flex">
+                        <p class="name mb-0"><b>Jhon Breno</b></p>
+                        <span class="text mb-0 ml-15">(85) 9 9946-9423</span>
+                      </div>
+                      <div class="d-flex">
+                        <span class="info-pedido mb-0">
+                          Recebido em 21/03/2025 às 20:00
+                        </span>
+                        <span class="info-pedido link mb-0">
+                          <i class="fas fa-motorcycle"></i> Entrega
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Dados de pagamento -->
+                <div class="col-12">
+                  <div class="card card-address cursor-default mt-2">
+                    <div class="img-icon-details">
+                      <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="infos pr-0">
+                      <p class="name mb-0"><b>Dinheiro</b></p>
+                      <span class="text mb-0 ml-15">Troco para: R$ 50,00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card endereço de entrega -->
+                <div class="col-12">
+                  <div class="card card-address mt-2">
+                    <div class="img-icon-details">
+                      <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="infos pr-0">
+                      <p class="name mb-0">
+                        <b>Rua Olá Mundo, 123, Meu Bairro</b>
+                      </p>
+                      <span class="text mb-0 ml-15"
+                        >Cidade-CE / CEP: 60540-285</span
+                      >
+                    </div>
+                    <div class="icon-edit">
+                      <i class="fas fa-location-arrow"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container-itens-pedido carrinho">
+              <div id="itensPedido">
+                <div class="card-item mb-2 pr-0">
+                  <div class="container-detalhes">
+                    <div class="detalhes-produto">
+                      <div class="infos-produto">
+                        <p class="name"><b>1x Calabresa</b></p>
+                        <p class="price"><b>R$ 39,90</b></p>
+                      </div>
+
+                      <div class="infos-produto">
+                        <p class="name-opcional mb-0">1x Borda de Catupiry</p>
+                        <p class="price-opcional mb-0">+ R$ 8,90</p>
+                      </div>
+
+                      <div class="infos-produto">
+                        <p class="obs-opcional mb-0">
+                          - Observação para enviar talheres de plastico e qual
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-item mb-2 pr-0">
+                  <div class="container-detalhes">
+                    <div class="detalhes-produto">
+                      <div class="infos-produto">
+                        <p class="name"><b>1x 4 Queijos</b></p>
+                        <p class="price"><b>R$ 39,90</b></p>
+                      </div>
+
+                      <div class="infos-produto">
+                        <p class="name-opcional mb-0">1x Borda de Catupiry</p>
+                        <p class="price-opcional mb-0">+ R$ 8,90</p>
+                      </div>
+
+                      <div class="infos-produto hidden">
+                        <p class="obs-opcional mb-0">
+                          - Observação para enviar talheres de plastico e qual
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- taxa de entrega -->
+                <div class="card-item mb-2">
+                  <div class="detalhes-produto">
+                    <div class="infos-produto">
+                      <p class="name mb-0">
+                        <i class="fa fa-motorcycle"></i>&nbsp;
+                        <b>Taxa de Entrega</b>
+                      </p>
+                      <p class="price mb-0"><b>+ R$ 15,00</b></p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- total-->
+                <div class="card-item mb-2">
+                  <div class="detalhes-produto">
+                    <div class="infos-produto">
+                      <p class="name-total mb-0"><b>Total</b></p>
+                      <p class="price-total mb-0"><b>R$ 105,50</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer-btn mt-3">
+                <button type="button" class="btn btn-yellow btn-sm">
+                  Aceitar Pedido
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
   </body>
