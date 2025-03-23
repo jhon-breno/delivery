@@ -671,3 +671,12 @@ input:checked + .slider:before {
   margin-top: -40px;
   margin-right: 10px !important;
 }
+
+.horario .form-control {
+  height: 52px !important;
+}
+
+.horario .btn-red {
+  margin-top: 30px;
+  margin-right: 10px !important;
+}
