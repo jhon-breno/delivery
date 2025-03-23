@@ -76,15 +76,15 @@
             <div class="row">
               <div class="col-12">
                 <div class="menus-config">
-                  <a href="#" class="btn btn-white btn-sm active">
+                  <a href="#" class="btn btn-white btn-sm">
                     <i class="fas fa-dollar-sign"></i> Faturamento
                   </a>
-                  <a href="#" class="btn btn-white btn-sm">
+                  <a href="#" class="btn btn-white btn-sm active">
                     <i class="fas fa-receipt"></i> Histórico de Pedidos
                   </a>
                 </div>
 
-                <div class="col-12 mt-5" id="faturamento">
+                <div class="col-12 mt-5 hidden" id="faturamento">
                   <p class="title-categoria mb-4">
                     <b>Acompanhe suas vendas e faturamento por período</b>
                   </p>
@@ -169,7 +169,81 @@
                   </div>
                 </div>
 
-                <div class="col-12 mt-5 hidden" id="historico"></div>
+                <div class="col-12 mt-5" id="historico">
+                  <p class="title-categoria mb-4">
+                    <b>Filtre todos os pedidos realizados</b>
+                  </p>
+
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0">
+                          <b>Data início:</b>
+                        </p>
+                        <input type="date" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0">
+                          <b>Data fim:</b>
+                        </p>
+                        <input type="date" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <a href="#" class="btn btn-yellow btn-sm mt-4">
+                        <i class="fas fa-search"></i>&nbsp; Filtrar Dados
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="card card-table mt-5">
+                    <div class="table-responsive">
+                      <table id="data-table" class="table data-table">
+                        <thead>
+                          <tr>
+                            <th># Código</th>
+                            <th>Cliente</th>
+                            <th>Tipo</th>
+                            <th>Pagamento</th>
+                            <th>Criado em</th>
+                            <th>Status</th>
+                            <th>(R$) Total</th>
+                            <th>Açoes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>#1</td>
+                            <td>Jhon Breno</td>
+                            <td>Delivery</td>
+                            <td>Cartão de Crédito</td>
+                            <td>20/03/2025</td>
+                            <td>
+                              <i class="fas fa-motorcycle"></i> Em entrega
+                            </td>
+                            <td><b class="color-green">R$ 89,90</b></td>
+                            <td>
+                              <a href="#" class="btn btn-white btn-sm">
+                                <i class="fas fa-receipt"></i>&nbsp; Detalhes
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th colspan="6"></th>
+                            <th><b class="color-green">R$ 250,00</b></th>
+                            <th></th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

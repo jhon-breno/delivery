@@ -687,3 +687,8 @@ input:checked + .slider:before {
   font-size: 20px;
   color: var(--color-black);
 }
+
+.card-table,
+.card-table {
+  font-size: 14px !important;
+}
