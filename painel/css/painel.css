@@ -632,3 +632,7 @@ input:checked + .slider:before {
 .color-red {
   color: var(--color-red) !important;
 }
+
+.opacity-05 {
+  opacity: 0.5;
+}

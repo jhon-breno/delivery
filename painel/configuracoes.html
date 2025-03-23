@@ -78,10 +78,10 @@
                   <a href="#" class="btn btn-white btn-sm">
                     <i class="fas fa-shopping-bag"></i> Delivery e retirada
                   </a>
-                  <a href="#" class="btn btn-white btn-sm active">
+                  <a href="#" class="btn btn-white btn-sm">
                     <i class="fas fa-motorcycle"></i> Taxa de entrega
                   </a>
-                  <a href="#" class="btn btn-white btn-sm">
+                  <a href="#" class="btn btn-white btn-sm active">
                     <i class="fas fa-coins"></i> Formas de pagamento
                   </a>
                 </div>
@@ -148,7 +148,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 mt-5" id="taxa-entrega">
+                <div class="col-12 mt-5 hidden" id="taxa-entrega">
                   <p class="title-categoria mb-0">
                     <b>Selecione as opções de taxa de entrega</b>
                   </p>
@@ -375,7 +375,95 @@
                   </div>
                 </div>
 
-                <div class="col-12 mt-5 hidden" id="forma-pagamento"></div>
+                <div class="col-12 mt-5" id="forma-pagamento">
+                  <p class="title-categoria mb-0">
+                    <b
+                      >Selecione as formas de
+                      <b class="color-primary">pagamento na entrega</b></b
+                    >
+                  </p>
+
+                  <div class="container-group mb-3">
+                    <div class="card card-address cursor-default mt-3">
+                      <div class="img-icon-details">
+                        <i class="fas fa-dollar-sign"></i>
+                      </div>
+                      <div class="infos">
+                        <p class="name mb-1"><b>Pix</b></p>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="container-group mb-3">
+                    <div class="card card-address cursor-default mt-3">
+                      <div class="img-icon-details">
+                        <i class="fas fa-coins"></i>
+                      </div>
+                      <div class="infos">
+                        <p class="name mb-1"><b>Dinheiro</b></p>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="container-group mb-3">
+                    <div class="card card-address cursor-default mt-3">
+                      <div class="img-icon-details">
+                        <i class="fas fa-credit-card"></i>
+                      </div>
+                      <div class="infos">
+                        <p class="name mb-1"><b>Cartão de crédito</b></p>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="container-group mb-3">
+                    <div class="card card-address cursor-default mt-3">
+                      <div class="img-icon-details">
+                        <i class="fas fa-dollar-sign"></i>
+                      </div>
+                      <div class="infos">
+                        <p class="name mb-1"><b>Cartão de Débito</b></p>
+                      </div>
+                      <label class="switch">
+                        <input type="checkbox" checked />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <p class="title-categoria mb-0 mt-5">
+                    <b
+                      >Formas de
+                      <b class="color-primary">pagamento Online</b></b
+                    >
+                  </p>
+
+                  <div class="container-group mb-3 opacity-05">
+                    <div class="card card-address cursor-default mt-3">
+                      <div class="img-icon-details">
+                        <i class="fas fa-mobile-alt"></i>
+                      </div>
+                      <div class="infos">
+                        <p class="name mb-1"><b>Em construção...</b></p>
+                        <span class="text mb-0"
+                          >Esta função será liberada em breve</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
