@@ -636,3 +636,27 @@ input:checked + .slider:before {
 .opacity-05 {
   opacity: 0.5;
 }
+/* Empresa */
+
+.logo-empresa .container-img-sobre {
+  position: relative;
+  margin-top: 0;
+  margin-right: 20px;
+  width: 110px;
+  right: 0;
+  height: 110px;
+}
+
+.logo-empresa .icon-action {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+
+.detalhes-empresa {
+  flex: 1;
+}
+
+.detalhes-empresa textarea {
+  height: 250px !important;
+}
