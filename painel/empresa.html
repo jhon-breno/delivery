@@ -76,10 +76,10 @@
             <div class="row">
               <div class="col-12">
                 <div class="menus-config">
-                  <a href="#" class="btn btn-white btn-sm active">
+                  <a href="#" class="btn btn-white btn-sm">
                     <i class="fas fa-info-circle"></i> Sobre a empresa
                   </a>
-                  <a href="#" class="btn btn-white btn-sm">
+                  <a href="#" class="btn btn-white btn-sm active">
                     <i class="fas fa-map-marked-alt"></i> Endereço físico
                   </a>
                   <a href="#" class="btn btn-white btn-sm">
@@ -87,7 +87,7 @@
                   </a>
                 </div>
 
-                <div class="col-12 mt-5" id="sobre">
+                <div class="col-12 mt-5 hidden" id="sobre">
                   <div class="d-flex">
                     <div class="logo-empresa">
                       <div
@@ -131,7 +131,106 @@
                   </div>
                 </div>
 
-                <div class="col-12 mt-5 hidden" id="endereco"></div>
+                <div class="col-12 mt-5" id="endereco">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="form-group container-cep">
+                        <p class="title-categoria mb-0"><b>CEP:</b></p>
+                        <input type="text" class="form-control" />
+                        <a href="" class="btn btn-yellow btn-sm"
+                          ><i class="fa fa-search"></i
+                        ></a>
+                      </div>
+                    </div>
+
+                    <div class="col-9"></div>
+                    <div class="col-6">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>Endereço:</b>
+                        </p>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>Bairro:</b>
+                        </p>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-2">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>Número:</b>
+                        </p>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>Cidade:</b>
+                        </p>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>Complemento:</b>
+                        </p>
+                        <input type="text" class="form-control" />
+                      </div>
+                    </div>
+
+                    <div class="col-2">
+                      <div class="form-group">
+                        <p class="title-categoria mb-0 mt-4">
+                          <b>UF:</b>
+                        </p>
+                        <select class="form-control">
+                          <option value="-1">...</option>
+                          <option value="AC">AC</option>
+                          <option value="AL">AL</option>
+                          <option value="AP">AP</option>
+                          <option value="AM">AM</option>
+                          <option value="BA">BA</option>
+                          <option value="CE">CE</option>
+                          <option value="DF">DF</option>
+                          <option value="ES">ES</option>
+                          <option value="GO">GO</option>
+                          <option value="MA">MA</option>
+                          <option value="MT">MT</option>
+                          <option value="MS">MS</option>
+                          <option value="MG">MG</option>
+                          <option value="PA">PA</option>
+                          <option value="PB">PB</option>
+                          <option value="PR">PR</option>
+                          <option value="PE">PE</option>
+                          <option value="PI">PI</option>
+                          <option value="RJ">RJ</option>
+                          <option value="RN">RN</option>
+                          <option value="RS">RS</option>
+                          <option value="RO">RO</option>
+                          <option value="RR">RR</option>
+                          <option value="SC">SC</option>
+                          <option value="SP">SP</option>
+                          <option value="SE">SE</option>
+                          <option value="TO">TO</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="btn btn-yellow btn-sm mt-5">
+                    <i class="fas fa-check"></i>&nbsp; Salvar Alterações
+                  </a>
+                </div>
 
                 <div class="col-12 mt-5 hidden" id="horario"></div>
               </div>

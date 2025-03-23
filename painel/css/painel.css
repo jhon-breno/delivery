@@ -660,3 +660,14 @@ input:checked + .slider:before {
 .detalhes-empresa textarea {
   height: 250px !important;
 }
+
+.container-cep .form-control {
+  padding-right: 75px !important;
+  height: 45px !important;
+}
+
+.container-cep .btn {
+  float: right !important;
+  margin-top: -40px;
+  margin-right: 10px !important;
+}
