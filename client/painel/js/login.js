@@ -19,13 +19,13 @@ login.method = {
     let senha = document.querySelector("#txtSenhaLogin").value.trim();
 
     if (email.length == 0) {
-      alert("Informe o email, por favor.");
+      app.method.mensagem("Informe o email, por favor.");
       document.querySelector("#txtEmailLogin").focus();
       return;
     }
 
     if (senha.length == 0) {
-      alert("Informe a senha, por favor.");
+      app.method.mensagem("Informe a senha, por favor.");
       document.querySelector("#txtSenhaLogin").focus();
       return;
     }
@@ -44,7 +44,18 @@ login.method = {
       "/login",
       JSON.stringify(dados),
       (response) => {
-        console.log(response);
+        if (response.status == "error") {
+          app.method.mensagem(response.message);
+          return;
+        }
+        if (response.status == "success") {
+          app.method.gravarValorStorage(response.TokenAcesso, "token");
+          app.method.gravarValorStorage(response.Nome, "nome");
+          app.method.gravarValorStorage(response.Email, "email");
+          app.method.gravarValorStorage(response.Logo, "logo");
+
+          window.location.href = "/painel/home.html";
+        }
       },
       (error) => {
         console.log(error);

@@ -53,6 +53,31 @@ b {
   background-color: var(--color-secondary);
 }
 
+.container-mensagens {
+  position: fixed !important;
+  right: 20px !important;
+  top: 60px !important;
+  z-index: 1000 !important;
+}
+
+.toast {
+  opacity: 1 !important;
+  width: auto !important;
+  color: var(--color-white) !important;
+  padding: 10px 25px !important;
+  font-size: 16px !important;
+  border-radius: 15px !important;
+  margin-bottom: 10px !important;
+}
+
+.toast.red {
+  background-color: var(--color-red);
+}
+
+.toast.green {
+  background-color: var(--color-green);
+}
+
 .width-fix {
   width: calc(100% - 20px) !important;
   max-width: 800px;
