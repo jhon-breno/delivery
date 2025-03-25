@@ -50,9 +50,9 @@ login.method = {
         }
         if (response.status == "success") {
           app.method.gravarValorStorage(response.TokenAcesso, "token");
-          app.method.gravarValorStorage(response.Nome, "nome");
-          app.method.gravarValorStorage(response.Email, "email");
-          app.method.gravarValorStorage(response.Logo, "logo");
+          app.method.gravarValorStorage(response.Nome, "Nome");
+          app.method.gravarValorStorage(response.Email, "Email");
+          app.method.gravarValorStorage(response.Logo, "Logo");
 
           window.location.href = "/painel/home.html";
         }
