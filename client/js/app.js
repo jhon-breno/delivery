@@ -20,14 +20,16 @@ app.method = {
             if (this.status == 200) {
               return callbackSuccess(JSON.parse(xhr.responseText));
             } else {
-              // Se o retorno for não autorizado, redireciona para a tela de login
+              // se o retorno for não autorizado, redireciona o usuário para o login
               if (xhr.status == 401) {
                 app.method.logout();
               }
+
               return callbackError(xhr.responseText);
             }
           }
         };
+
         xhr.send();
       }
     } catch (error) {
@@ -52,14 +54,50 @@ app.method = {
             if (this.status == 200) {
               return callbackSuccess(JSON.parse(xhr.responseText));
             } else {
-              // Se o retorno for não autorizado, redireciona para a tela de login
+              // se o retorno for não autorizado, redireciona o usuário para o login
               if (xhr.status == 401) {
                 app.method.logout();
               }
+
               return callbackError(xhr.responseText);
             }
           }
         };
+
+        xhr.send(dados);
+      }
+    } catch (error) {
+      return callbackError(error);
+    }
+  },
+
+  // centraliza as chamadas de UPLOAD
+  upload: (url, dados, callbackSuccess, callbackError, login = false) => {
+    try {
+      if (app.method.validaToken(login)) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Mime-Type", "multipart/form-data");
+        xhr.setRequestHeader(
+          "Authorization",
+          app.method.obterValorStorage("token")
+        );
+
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) {
+              return callbackSuccess(JSON.parse(xhr.responseText));
+            } else {
+              // se o retorno for não autorizado, redireciona o usuário para o login
+              if (xhr.status == 401) {
+                app.method.logout();
+              }
+
+              return callbackError(xhr.responseText);
+            }
+          }
+        };
+
         xhr.send(dados);
       }
     } catch (error) {
@@ -81,26 +119,32 @@ app.method = {
       window.location.href = "/painel/login.html";
       return false;
     }
+
     return true;
   },
 
-  // grava valor no localstorage
+  // grava valores no localstorage
   gravarValorStorage: (valor, local) => {
     localStorage[local] = valor;
   },
 
-  // obtém valor do localstorage
+  // obtem um valor do localstorage
   obterValorStorage: (local) => {
     return localStorage[local];
   },
 
-  // metodo que limpa o localstorage e redireciona para a tela de login
+  // remove uma sessão
+  removerSessao: (local) => {
+    localStorage.removeItem(local);
+  },
+
+  // método que limpa todo o localstorage e redireciona pro login
   logout: () => {
     localStorage.clear();
     window.location.href = "/painel/login.html";
   },
 
-  // método genérico para exibir mensagens
+  // método genérico para mensagens
   mensagem: (texto, cor = "red", tempo = 3500) => {
     let container = document.querySelector("#container-mensagens");
 
@@ -110,7 +154,7 @@ app.method = {
 
     let id = Math.floor(Date.now() * Math.random()).toString();
 
-    let msg = `<div id='msg-${id}' class="toast ${cor}">${texto}</div>`;
+    let msg = `<div id="msg-${id}" class="toast ${cor}">${texto}</div>`;
 
     container.innerHTML += msg;
 
@@ -119,7 +163,16 @@ app.method = {
     }, tempo);
   },
 
-  // método para carregar os dados da empresa
+  // método que exibe o loader
+  loading: (running = false) => {
+    if (running) {
+      document.querySelector(".loader-full").classList.remove("hidden");
+    } else {
+      document.querySelector(".loader-full").classList.add("hidden");
+    }
+  },
+
+  // carrega os dados da empresa
   carregarDadosEmpresa: () => {
     document.querySelector(".nome-empresa").innerHTML =
       app.method.obterValorStorage("Nome");
@@ -127,6 +180,7 @@ app.method = {
       app.method.obterValorStorage("Email");
 
     let logotipo = app.method.obterValorStorage("Logo");
+
     if (
       logotipo != undefined &&
       logotipo != null &&

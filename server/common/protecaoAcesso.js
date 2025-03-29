@@ -14,7 +14,7 @@ var UsuarioAcessoToken = new SchemaObject(
               Nome: dados.nome,
             },
             "Token",
-            { expiresIn: 86400000 }
+            { expiresIn: "1d" }
           );
         } catch (error) {
           console.log(error);
@@ -22,8 +22,9 @@ var UsuarioAcessoToken = new SchemaObject(
         }
       },
 
-      verificarTokenAcesso(req, res, next) {
+      verificaTokenAcesso(req, res, next) {
         var headerTokenAcesso = req.headers["authorization"];
+
         if (typeof headerTokenAcesso != "undefined") {
           try {
             jwt.verify(headerTokenAcesso, "Token");
@@ -35,21 +36,23 @@ var UsuarioAcessoToken = new SchemaObject(
           res.send(401);
         }
       },
-    },
 
-    retornaCodigoTokenAcesso(valor, req) {
-      var headerTokenAcesso = req.headers["authorization"];
-      var decoded = jwt.decode(headerTokenAcesso, { complete: true });
+      retornaCodigoTokenAcesso(valor, req) {
+        var headerTokenAcesso = req.headers["authorization"];
+        var decoded = jwt.decode(headerTokenAcesso, { complete: true });
 
-      if (valor == "IdEmpresa") {
-        return decoded.payload.IdEmpresa;
-      }
-      if (valor == "Email") {
-        return decoded.payload["Email"];
-      }
-      if (valor == "Nome") {
-        return decoded.payload.Nome;
-      }
+        if (valor === "IdEmpresa") {
+          return decoded.payload.IdEmpresa;
+        }
+
+        if (valor === "Email") {
+          return decoded.payload.Email;
+        }
+
+        if (valor === "Nome") {
+          return decoded.payload.Nome;
+        }
+      },
     },
   }
 );

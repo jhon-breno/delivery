@@ -10,6 +10,7 @@
   "description": "",
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
+    "mv": "^2.1.1",
     "mysql": "^2.18.1",
     "node-schema-object": "^3.3.4",
     "recursive-readdir": "^2.2.3",

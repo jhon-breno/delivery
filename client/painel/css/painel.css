@@ -427,11 +427,11 @@ h1.title-page {
   margin-left: 10px;
   font-size: 16px;
   color: var(--color-black) !important;
-  text-decoration: none;
+  text-decoration: none !important;
   width: 35px;
   height: 35px;
   background-color: var(--color-white);
-  border-radius: 50%;
+  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -639,18 +639,18 @@ input:checked + .slider:before {
 /* Empresa */
 
 .logo-empresa .container-img-sobre {
-  position: relative;
-  margin-top: 0;
-  margin-right: 20px;
-  width: 110px;
-  right: 0;
-  height: 110px;
+  position: relative !important;
+  margin-top: 0 !important;
+  width: 110px !important;
+  height: 110px !important;
+  right: 0 !important;
+  margin-right: 20px !important;
 }
 
 .logo-empresa .icon-action {
-  position: absolute;
-  right: -10px;
-  top: -10px;
+  position: absolute !important;
+  right: -10px !important;
+  bottom: -10px !important;
 }
 
 .detalhes-empresa {
@@ -691,4 +691,37 @@ input:checked + .slider:before {
 .card-table,
 .card-table {
   font-size: 14px !important;
+}
+
+/* Modal upload Logo */
+
+.modal-cadastro .modal-content {
+  background-color: var(--color-white);
+}
+
+.upload #drop-area {
+  border: 2px dashed var(--color-primary) !important;
+  border-radius: 20px;
+  padding: 70px;
+  background: var(--color-white);
+}
+
+.upload #drop-area.highlight {
+  background: var(--color-secondary) !important;
+}
+
+.upload p {
+  margin-top: 0;
+  color: var(--color-black);
+}
+
+.upload .my-form {
+  margin-bottom: 10px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.upload #fileElem {
+  display: none;
 }
