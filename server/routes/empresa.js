@@ -18,4 +18,14 @@ module.exports = (server) => {
       res.send(result);
     }
   );
+
+  // salva todas as informações da empresa na página "Endereço"
+  server.post(
+    "/empresa/endereco",
+    Acesso.verificaTokenAcesso,
+    async (req, res) => {
+      const result = await ct.controllers().salvarDadosEndereco(req);
+      res.send(result);
+    }
+  );
 };

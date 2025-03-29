@@ -181,8 +181,12 @@
                   <div class="col-3">
                     <div class="form-group container-cep">
                       <p class="title-categoria mb-0"><b>CEP:</b></p>
-                      <input type="text" class="form-control" />
-                      <a class="btn btn-yellow btn-sm">
+                      <input type="text" class="form-control cep" id="txtCEP" />
+                      <a
+                        href="#!"
+                        class="btn btn-yellow btn-sm"
+                        onclick="empresa.method.buscarCep()"
+                      >
                         <i class="fa fa-search"></i>
                       </a>
                     </div>
@@ -193,28 +197,32 @@
                   <div class="col-6">
                     <div class="form-group">
                       <p class="title-categoria mb-0 mt-4"><b>Endereço:</b></p>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="txtEndereco"
+                      />
                     </div>
                   </div>
 
                   <div class="col-4">
                     <div class="form-group">
                       <p class="title-categoria mb-0 mt-4"><b>Bairro:</b></p>
-                      <input type="text" class="form-control" />
+                      <input type="text" class="form-control" id="txtBairro" />
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div class="form-group">
                       <p class="title-categoria mb-0 mt-4"><b>Número:</b></p>
-                      <input type="text" class="form-control" />
+                      <input type="text" class="form-control" id="txtNumero" />
                     </div>
                   </div>
 
                   <div class="col-6">
                     <div class="form-group">
                       <p class="title-categoria mb-0 mt-4"><b>Cidade:</b></p>
-                      <input type="text" class="form-control" />
+                      <input type="text" class="form-control" id="txtCidade" />
                     </div>
                   </div>
 
@@ -223,14 +231,18 @@
                       <p class="title-categoria mb-0 mt-4">
                         <b>Complemento:</b>
                       </p>
-                      <input type="text" class="form-control" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="txtComplemento"
+                      />
                     </div>
                   </div>
 
                   <div class="col-2">
                     <div class="form-group">
                       <p class="title-categoria mb-0 mt-4"><b>UF:</b></p>
-                      <select class="form-control">
+                      <select class="form-control" id="ddlUf">
                         <option value="-1">...</option>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
@@ -264,7 +276,11 @@
                   </div>
                 </div>
 
-                <a class="btn btn-yellow btn-sm mt-5">
+                <a
+                  href="#!"
+                  class="btn btn-yellow btn-sm mt-5"
+                  onclick="empresa.method.salvarDadosEndereco()"
+                >
                   <i class="fas fa-check"></i>&nbsp; Salvar Alterações
                 </a>
               </div>
@@ -404,6 +420,8 @@
       </div>
     </div>
 
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
     <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../js/app.js"></script>
     <script type="text/javascript" src="./js/empresa.js"></script>

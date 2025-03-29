@@ -52,3 +52,20 @@ WHERE
     idempresa = @idempresa
 
 --END#removerImagem#
+
+--INIT#salvarDadosEndereco#
+
+UPDATE 
+    empresa
+SET
+    cep = @cep,
+    endereco = @endereco,
+    numero = @numero,
+    bairro = @bairro,
+    complemento = @complemento,
+    cidade = @cidade,
+    estado = @estado
+WHERE
+    idempresa = @idempresa
+
+--END#salvarDadosEndereco#

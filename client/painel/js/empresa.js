@@ -52,6 +52,9 @@ empresa.event = {
 
     // Evento quando solta a imagem no container
     DROP_AREA.addEventListener("drop", empresa.method.handleDrop, false);
+
+    // inicializa a mascara do CEP
+    $(".cep").mask("00000-000");
   },
 };
 
@@ -127,6 +130,13 @@ empresa.method = {
           empresa.sobre.replace(/\n/g, "\r\n");
 
         // Carrega a TAB endereço
+        document.getElementById("txtCEP").value = empresa.cep;
+        document.getElementById("txtEndereco").value = empresa.endereco;
+        document.getElementById("txtBairro").value = empresa.bairro;
+        document.getElementById("txtNumero").value = empresa.numero;
+        document.getElementById("txtCidade").value = empresa.cidade;
+        document.getElementById("txtComplemento").value = empresa.complemento;
+        document.getElementById("ddlUf").value = empresa.estado;
       },
       (error) => {
         console.log("error", error);
@@ -286,6 +296,131 @@ empresa.method = {
     var files = dt.files;
 
     empresa.method.uploadLogo(files);
+  },
+
+  // API viaCEP
+  buscarCep: () => {
+    // Cria a variavel com o valor do cep
+    var cep = document.getElementById("txtCEP").value.trim().replace(/\D/g, "");
+    if (cep != "") {
+      // expressao regular para validar o CEP
+      var validacep = /^[0-9]{8}$/;
+
+      // valida o formato do CEP
+      if (validacep.test(cep)) {
+        // cria um elemento javascrpt
+        var script = document.createElement("script");
+
+        // sincroniza com o callback
+        script.src = `https://viacep.com.br/ws/${cep}/json/?callback=empresa.method.callbackCep`;
+
+        //  insere script no documento e carrega o conteudo
+        document.body.appendChild(script);
+      } else {
+        app.method.mensagem("Formato do CEP inválido.");
+        document.getElementById("txtCEP").focus();
+        return;
+      }
+    } else {
+      app.method.mensagem("Informe o CEP, por favor.");
+      document.getElementById("txtCEP").focus();
+    }
+  },
+
+  // metodo chamado quando a API retorna o CEP
+  callbackCep: (dados) => {
+    if (!("erro" in dados)) {
+      document.getElementById("txtEndereco").value = dados.logradouro;
+      document.getElementById("txtBairro").value = dados.bairro;
+      document.getElementById("txtCidade").value = dados.localidade;
+      document.getElementById("ddlUf").value = dados.uf;
+      if (dados.logradouro == "") {
+        document.getElementById("txtEndereco").focus();
+      } else {
+        document.getElementById("txtNumero").focus();
+      }
+    } else {
+      app.method.mensagem(
+        "CEP não encontrado. Preencha as informações manualmente."
+      );
+      document.getElementById("txtEndereco").focus();
+    }
+  },
+
+  // Salva os dados do endereço da empresa
+  salvarDadosEndereco: () => {
+    let cep = document.getElementById("txtCEP").value.trim().replace(/\D/g, "");
+    let endereco = document.getElementById("txtEndereco").value.trim();
+    let bairro = document.getElementById("txtBairro").value.trim();
+    let numero = document.getElementById("txtNumero").value.trim();
+    let cidade = document.getElementById("txtCidade").value.trim();
+    let complemento = document.getElementById("txtComplemento").value.trim();
+    let uf = document.getElementById("ddlUf").value;
+
+    if (cep.length <= 0) {
+      app.method.mensagem("Informe o CEP, por favor.");
+      document.getElementById("txtCEP").focus();
+      return;
+    }
+    if (endereco.length <= 0) {
+      app.method.mensagem("Informe o endereço, por favor.");
+      document.getElementById("txtEndereco").focus();
+      return;
+    }
+    if (bairro.length <= 0) {
+      app.method.mensagem("Informe o bairro, por favor.");
+      document.getElementById("txtBairro").focus();
+      return;
+    }
+    if (numero.length <= 0) {
+      app.method.mensagem("Informe o número, por favor.");
+      document.getElementById("txtNumero").focus();
+      return;
+    }
+    if (cidade.length <= 0) {
+      app.method.mensagem("Informe a cidade, por favor.");
+      document.getElementById("txtCidade").focus();
+      return;
+    }
+    if (uf.length == "-1") {
+      app.method.mensagem("Informe o estado, por favor.");
+      document.getElementById("ddlUf").focus();
+      return;
+    }
+
+    let dados = {
+      cep: cep,
+      endereco: endereco,
+      bairro: bairro,
+      cidade: cidade,
+      estado: uf,
+      numero: numero,
+      complemento: complemento,
+    };
+
+    app.method.loading(true);
+
+    app.method.post(
+      "/empresa/endereco",
+      JSON.stringify(dados),
+      (response) => {
+        console.log("response", response);
+        app.method.loading(false);
+
+        if (response.status === "error") {
+          app.method.mensagem(response.message);
+          return;
+        }
+
+        app.method.mensagem(response.message, "green");
+
+        empresa.method.obterDados();
+      },
+      (error) => {
+        console.log("error", error);
+        app.method.loading(false);
+      }
+    );
   },
 
   obterHorarios: () => {},
