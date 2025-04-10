@@ -423,5 +423,252 @@ empresa.method = {
     );
   },
 
-  obterHorarios: () => {},
+  // Obtém os horários de funcionamento da empresa
+  obterHorarios: () => {
+    document.getElementById("listaHorarios").innerHTML = "";
+
+    app.method.get("/empresa/horario", (response) => {
+      console.log(response);
+
+      if (response.status == "error") {
+        app.method.mensagem(response.message);
+        return;
+      }
+
+      empresa.method.carregarHorarios(response.data);
+
+      (error) => {
+        console.log("error", error);
+      };
+    });
+  },
+
+  // Carrega os horários de funcionamento da empresa
+  carregarHorarios: (lista) => {
+    if (lista.length > 0) {
+      lista.forEach((e, i) => {
+        // cria um id aleatório para cada horario
+        let id = Math.floor(Date.now() * Math.random()).toString();
+
+        let temp = empresa.template.horario.replace(/\${id}/g, id);
+
+        let htmlObject = document.createElement("div");
+        htmlObject.classList.add("row", "horario", "mb-4");
+        htmlObject.id = `horario-${id}`;
+        htmlObject.innerHTML = temp;
+
+        // adiciona o horario na tela
+        document.getElementById("listaHorarios").appendChild(htmlObject);
+
+        // preenche os dados do horario
+        document.querySelector(`#diainicio-${id}`).value = e.diainicio;
+        document.querySelector(`#diafim-${id}`).value = e.diafim;
+        document.querySelector(`#iniciohorarioum-${id}`).value =
+          e.iniciohorarioum;
+        document.querySelector(`#fimhorarioum-${id}`).value = e.fimhorarioum;
+        document.querySelector(`#iniciohorariodois-${id}`).value =
+          e.iniciohorariodois;
+        document.querySelector(`#fimhorariodois-${id}`).value =
+          e.fimhorariodois;
+      });
+    } else {
+      // nenhum horario encontrado, adicionar uma linha em branco
+      empresa.adicionarHorario();
+    }
+  },
+
+  // remove a linha do horario
+  removerHorario: (id) => {
+    document.getElementById(`horario-${id}`).remove();
+  },
+
+  // Adiciona uma nova linha de horário
+  adicionarHorario: () => {
+    let adicionar = true;
+    // primeiro valida se tem alguma linha sem registros
+    document.querySelectorAll("#listaHorarios .horario").forEach((e, i) => {
+      let _id = e.id.split("-")[1];
+      let diainicio = document.querySelector(`#diainicio-${_id}`).value;
+      let diafim = document.querySelector(`#diafim-${_id}`).value;
+      let iniciohorarioum = document.querySelector(
+        `#iniciohorarioum-${_id}`
+      ).value;
+      let fimhorarioum = document.querySelector(`#fimhorarioum-${_id}`).value;
+
+      if (
+        diainicio <= -1 ||
+        diafim <= -1 ||
+        iniciohorarioum.length <= 0 ||
+        fimhorarioum.length <= 0
+      ) {
+        adicionar = false;
+        app.method.mensagem(
+          "Antes de adicionar outra linha, verifique se não existem campos obrigatórios em branco."
+        );
+      }
+    });
+
+    if (!adicionar) {
+      return;
+    }
+
+    // cria um id aleatório para cada horario
+    let id = Math.floor(Date.now() * Math.random()).toString();
+
+    let temp = empresa.template.horario.replace(/\${id}/g, id);
+
+    let htmlObject = document.createElement("div");
+    htmlObject.classList.add("row", "horario", "mb-4");
+    htmlObject.id = `horario-${id}`;
+    htmlObject.innerHTML = temp;
+
+    // adiciona o horario na tela
+    document.getElementById("listaHorarios").appendChild(htmlObject);
+  },
+
+  // Valida os campos obrigatórios e salva os horários
+  salvarHorario: () => {
+    let horarios = [];
+    let continuar = true;
+
+    // primeiro valida se tem alguma linha sem registros
+    document.querySelectorAll("#listaHorarios .horario").forEach((e, i) => {
+      let _id = e.id.split("-")[1];
+      let diainicio = document.querySelector(`#diainicio-${_id}`).value;
+      let diafim = document.querySelector(`#diafim-${_id}`).value;
+      let iniciohorarioum = document.querySelector(
+        `#iniciohorarioum-${_id}`
+      ).value;
+      let fimhorarioum = document.querySelector(`#fimhorarioum-${_id}`).value;
+      let iniciohorariodois = document.querySelector(
+        `#iniciohorariodois-${_id}`
+      ).value;
+      let fimhorariodois = document.querySelector(
+        `#fimhorariodois-${_id}`
+      ).value;
+
+      if (
+        diainicio <= -1 ||
+        diafim <= -1 ||
+        iniciohorarioum.length <= 0 ||
+        fimhorarioum.length <= 0
+      ) {
+        continuar = false;
+        app.method.mensagem(
+          "Alguns campos obrigatórios não foram preenchidos. Verifique e tente novamente."
+        );
+      }
+
+      horarios.push({
+        diainicio: diainicio,
+        diafim: diafim,
+        iniciohorarioum: iniciohorarioum,
+        fimhorarioum: fimhorarioum,
+        iniciohorariodois: iniciohorariodois,
+        fimhorariodois: fimhorariodois,
+      });
+    });
+
+    if (!continuar || horarios.length <= 0) {
+      app.method.mensagem("Não existem horários para salvar.");
+      return;
+    }
+    console.log("horarios", horarios);
+
+    app.method.loading(true);
+
+    app.method.post(
+      "/empresa/horario",
+      JSON.stringify(horarios),
+      (response) => {
+        console.log("response", response);
+        app.method.loading(false);
+
+        if (response.status === "error") {
+          app.method.mensagem(response.message);
+          return;
+        }
+
+        app.method.mensagem(response.message, "green");
+
+        empresa.method.openTab("horario");
+      },
+      (error) => {
+        console.log("error", error);
+        app.method.loading(false);
+      }
+    );
+  },
+};
+
+empresa.template = {
+  horario: `<div class="col-2">
+                    <div class="form-group">
+                      <p class="title-categoria mb-0"><b>De *:</b></p>
+                      <select class="form-control" id="diainicio-\${id}">
+                        <option value="-1">...</option>
+                        <option value="0">Domingo</option>
+                        <option value="1">Segunda</option>
+                        <option value="2">Terça</option>
+                        <option value="3">Quarta</option>
+                        <option value="4">Quinta</option>
+                        <option value="5">Sexta</option>
+                        <option value="6">Sábado</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-2">
+                    <div class="form-group">
+                      <p class="title-categoria mb-0"><b>até *:</b></p>
+                      <select class="form-control" id="diafim-\${id}">
+                        <option value="-1">...</option>
+                        <option value="0">Domingo</option>
+                        <option value="1">Segunda</option>
+                        <option value="2">Terça</option>
+                        <option value="3">Quarta</option>
+                        <option value="4">Quinta</option>
+                        <option value="5">Sexta</option>
+                        <option value="6">Sábado</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-7">
+                    <div class="row">
+                      <div class="col-3">
+                        <div class="form-group">
+                          <p class="title-categoria mb-0"><b>das *:</b></p>
+                          <input type="time" class="form-control" id="iniciohorarioum-\${id}" />
+                        </div>
+                      </div>
+
+                      <div class="col-3">
+                        <div class="form-group">
+                          <p class="title-categoria mb-0"><b>até as *:</b></p>
+                          <input type="time" class="form-control" id="fimhorarioum-\${id}"/>
+                        </div>
+                      </div>
+
+                      <div class="col-3">
+                        <div class="form-group">
+                          <p class="title-categoria mb-0"><b>e das:</b></p>
+                          <input type="time" class="form-control" id="iniciohorariodois-\${id}"/>
+                        </div>
+                      </div>
+
+                      <div class="col-3">
+                        <div class="form-group">
+                          <p class="title-categoria mb-0"><b>até as:</b></p>
+                          <input type="time" class="form-control" id="fimhorariodois-\${id}"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-1">
+                    <a href="#!" class="btn btn-red btn-sm" onclick="empresa.method.removerHorario('\${id}')">
+                      <i class="fas fa-trash-alt"></i>
+                    </a>
+                  </div>`,
 };
